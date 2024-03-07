@@ -4,7 +4,7 @@ class Carros:
     def __init__(self, modelo, pintura):
         self.modelo = modelo.title()
         self.pintura = pintura.title()
-        self.disponivel = False
+        self._disponivel = False
 
         Carros.carros.append(self)
 
@@ -13,13 +13,22 @@ class Carros:
     
     @classmethod
     def listar_carros(cls):
-        print(f"{"Modelo do carro".ljust(20)} | {"Cor do carro".ljust(20)}")
+        print(f"{"Modelo do carro".ljust(20)} | {"Cor do carro".ljust(20)} | {"Status do carro"}")
         for carro in cls.carros:
-            print(f"{carro.modelo.ljust(20)} | {carro.pintura.ljust(20)}")
+            print(f"{carro.modelo.ljust(20)} | {carro.pintura.ljust(20)} | {carro.carro_disponivel}")
+
+    @property
+    def carro_disponivel(self):
+        return 'Disponivel' if self._disponivel else 'Indisponivel'
+    
+    def alterar_estado(self):
+        self._disponivel = not self._disponivel
 
 
 carro1 = Carros("palio", "verde")
+carro1.alterar_estado()
 carro2 = Carros("fusca", "preto")
 carro3 = Carros("nivus", "azul")
+carro3.alterar_estado()
 
 Carros.listar_carros()
