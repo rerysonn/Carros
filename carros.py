@@ -25,10 +25,5 @@ class Carros:
         self._disponivel = not self._disponivel
 
 
-carro1 = Carros("palio", "verde")
-carro1.alterar_estado()
-carro2 = Carros("fusca", "preto")
-carro3 = Carros("nivus", "azul")
-carro3.alterar_estado()
 
-Carros.listar_carros()
+
